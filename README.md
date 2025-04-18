@@ -1,5 +1,6 @@
 ## About Me
-I am a computer science major at the University of Central Florida, class of 2028, with a minor in cybersecruity. My main aspiration is to become a software developer at a fitness company.
+I am a computer science major at the University of Central Florida, class of 2028, with a minor in cybersecruity. 
+My main aspiration is to become a software developer at a fitness company.
 
 My general hobbies are working out, listening to music, and driving my 2014 Genesis Coupe.
 
