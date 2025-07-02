@@ -10,7 +10,6 @@ Right now, I am currently learning C and Java. I also have rudementary knowledge
 ## How to reach me
 ```zaynedockery@gmail.com``` for emails<br>
 ```@zayne.doc``` on Instagram<br>
-```filipinocoupe``` on Discord <br>
 
 Fun fact: 
 I have a real eyebrow scar, I got it from sleep-walking into a door frame when I was about 8 or 9 y/o
