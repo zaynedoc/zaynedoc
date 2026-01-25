@@ -2,9 +2,6 @@
   <a href="https://zaynedoc.dev">
     <img src="https://img.shields.io/badge/Website-zaynedoc.dev-4285F4?style=for-the-badge&logo=google-chrome&logoColor=white" alt="Website" />
   </a>
-  <a href="https://github.com/zaynedoc">
-    <img src="https://img.shields.io/badge/GitHub-zaynedoc-181717?style=for-the-badge&logo=github" alt="GitHub" />
-  </a>
   <a>
     <br><br>University of Central Florida (2024 - 2028)
     <br>Information Technology, B.S. · Cybersecurity, Minor<br><br>
