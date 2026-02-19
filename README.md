@@ -12,7 +12,8 @@
 </p>
 
 <p align="center">
-<br><strong>Languages:</strong> C#, TypeScript, JavaScript, Java, Python, C, Lua, SQL, React, HTML, Tailwind CSS<br><br>
-<strong>Frameworks/DBs/APIs:</strong> ASP.NET Core / MVC, Next.js, Azure SQL, Supabase BaaS, OpenAI, Stripe, reCAPTCHA<br><br>
-<strong>Tools:</strong> Visual Studio, IntelliJ IDEA, Cloudflare, GitHub, Git, Jira, Confluence, ScriptRunner, Docker<br><br>
+<br><strong>Frameworks:</strong> ASP.NET Core, ASP.NET MVC, Next.js, FastAPI, React<br><br>
+    <strong>Languages:</strong> C#, TypeScript, JavaScript, Java, Python, C, Lua, SQL, HTML, Tailwind CSS, Git<br><br>
+    <strong>APIs/DBs:</strong> OpenAI API, Stripe API, reCAPTCHA, Azure SQL, Supabase, Elasticsearch, PostgreSQL<br><br>
+    <strong>Tools:</strong> Visual Studio, VS Code, IntelliJ IDEA, Cloudflare, GitHub, Jira, Confluence, ScriptRunner, Docker<br><br>
 </p>
