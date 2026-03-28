@@ -4,7 +4,6 @@
   </a>
   <a>
     <br><br>University of Central Florida (2024 - 2028)
-    <br>Information Technology, B.S. · Cybersecurity, Minor<br>
     <br>I like to make digital things<br><br>
   </a>
   <a href="https://zaynedoc.dev">
