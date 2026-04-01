@@ -3,7 +3,7 @@
     <img src="https://img.shields.io/badge/LinkedIn-Connect-8026FF?style=for-the-badge&logo=linkedin&logoColor=white" alt="LinkedIn"/>
   </a>
   <a>
-    <br><br>University of Central Florida (2024 - 2028)
+    <br><br>University of Central Florida (2024 - 2028)<br>
     <br>I like to make digital things<br><br>
   </a>
   <a href="https://zaynedoc.dev">
@@ -20,8 +20,9 @@
 </div>
 
 <p align="center">
-<br><strong>Frameworks:</strong> ASP.NET Core, ASP.NET MVC, Next.js, FastAPI, React<br><br>
-    <strong>Languages:</strong> C#, TypeScript, JavaScript, Java, Python, C, Lua, SQL, HTML, Tailwind CSS, Git<br><br>
-    <strong>APIs/DBs:</strong> OpenAI API, Stripe API, reCAPTCHA, Azure SQL, Supabase, Elasticsearch, SQLite, MySQL<br><br>
-    <strong>Tools:</strong> Visual Studio, VS Code, IntelliJ IDEA, Cloudflare, GitHub, Jira, Confluence, ScriptRunner, Docker<br><br>
+<br><strong>Languages:</strong> C#, TypeScript, JavaScript, Python, Java, C, Lua, MySQL, HTML/CSS<br/><br/>
+    <strong>Frameworks:</strong> ASP.NET Core / MVC, Next.js, React, FastAPI, Tailwind CSS, Google ADK<br/><br/>
+    <strong>Tools/Platforms:</strong> Git, GitHub, Docker, Visual Studio Code, IntelliJ IDEA, Eclipse, Jira, Confluence, ScriptRunner<br/><br/>
+    <strong>Cloud/Data/APIs:</strong> Azure SQL, Elasticsearch, Supabase, Cloudflare, Vercel, Railway, Google Gemini, reCAPTCHA<br/><br/>
+
 </p>
