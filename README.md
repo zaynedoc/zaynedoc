@@ -2,7 +2,7 @@
   <a>
     <img src="3dgifmaker20847.gif"><br>
 <p align="center">
-  <a href="https://zaynedoc.dev)">
+  <a href="https://zaynedoc.dev">
     <img src="https://img.shields.io/badge/Website-zaynedoc.dev-8026FF?style=for-the-badge&logoColor=white" alt="Website"/>
   </a>
 </p>
@@ -15,7 +15,7 @@
 </div>
 
 <p align="center">
-  <a href="https://zaynedoc.dev">
+  <a href="https://linked.com/in/zaynedoc">
     <img src="https://img.shields.io/badge/LinkedIn-Connect-8026FF?style=for-the-badge&logoColor=white" alt="LinkedIn"/>
   </a>
 </p>
