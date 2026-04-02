@@ -1,5 +1,5 @@
 <p align="center">
-  <img src="galaxy-logo.gif">
+  <img src="galaxy-bg-small.gif">
 </p>
 
 <p align="center">
