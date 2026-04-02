@@ -1,4 +1,10 @@
+<p align="center">
+  <img src="galaxy-logo.gif">
+</p>
 
+<p align="center">
+  I like to make digital things<br/><br/>
+</p>
 
 ------
 
