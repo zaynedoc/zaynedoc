@@ -6,7 +6,7 @@
 
 <p align="center">
   <a href="https://linkedin.com/in/zaynedoc/">
-    <img src="https://img.shields.io/badge/LinkedIn-Connect-8026FF?style=for-the-badge&logoColor=white" alt="LinkedIn"/>
+    <img src="linkedin-connect.png" width="240"/>
   </a>
 </p>
 
