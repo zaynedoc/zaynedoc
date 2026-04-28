@@ -31,10 +31,10 @@
 ------
 
 <p align="center">
-<br><strong>Languages:</strong> C#, TypeScript, JavaScript, Python, Java, C, Lua, MySQL, HTML/CSS<br/><br/>
+<br><strong>Languages:</strong> C#, TypeScript, JavaScript, Python, Java, C, Lua, SQL, HTML/CSS<br/><br/>
     <strong>Frameworks:</strong> ASP.NET Core / MVC, Next.js, React, FastAPI, Tailwind CSS, Google ADK<br/><br/>
-    <strong>Tools/Platforms:</strong> Git, GitHub, Docker, Visual Studio Code, IntelliJ IDEA, Eclipse, Jira, Confluence, ScriptRunner<br/><br/>
-    <strong>Cloud/Data/APIs:</strong> Azure SQL, Elasticsearch, Supabase, Cloudflare, Vercel, Railway, Google Gemini, reCAPTCHA<br/><br/>
+    <strong>Tools/Platforms:</strong> Git, GitHub, Docker, Visual Studio Code, IntelliJ IDEA, Jira, Confluence, ScriptRunner<br/><br/>
+    <strong>Cloud/Data/APIs:</strong> Azure SQL, MySQL, SQLite, Elasticsearch, Supabase, Cloudflare, Vercel, Google Gemini, reCAPTCHA<br/><br/>
 </p>
 
 
