@@ -1,5 +1,5 @@
 <p align="center">
-  <a href="https://zaynedoc.dev/dashboard">
+  <a href="https://zaynedoc.dev/">
     <img src="galaxy-bg-small.gif">
   </a>
 </p>
