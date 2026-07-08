@@ -16,7 +16,7 @@
   <tr>
     <td align="center" valign="middle" width="420">
       <p align="center">
-        <img src="http://github-profile-summary-cards.vercel.app/api/cards/most-commit-language?username=zaynedoc&theme=github_dark"/>
+        <img src="http://github-profile-summary-cards.vercel.app/api/cards/repos-per-language?username=zaynedoc&theme=github_dark"/>
       </p>
     </td>
     <td align="center" valign="middle" width="240">
