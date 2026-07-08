@@ -14,9 +14,6 @@
 
 <table align="center">
   <tr>
-    <td align="center" valign="middle" width="240">
-      <img src="3dgifmaker20847.gif" width="220" alt="Left GIF"/>
-    </td>
     <td align="center" valign="middle" width="420">
       <p align="center">
         <img src="http://github-profile-summary-cards.vercel.app/api/cards/most-commit-language?username=zaynedoc&theme=github_dark"/>
@@ -24,6 +21,11 @@
     </td>
     <td align="center" valign="middle" width="240">
       <img src="3dgifmaker52135.gif" width="220" alt="Right GIF"/>
+    </td>
+    <td align="center" valign="middle" width="420">
+      <p align="center">
+        <img src="http://github-profile-summary-cards.vercel.app/api/cards/profile-details?username=zaynedoc&theme=dark"/>
+      </p>
     </td>
   </tr>
 </table>
