@@ -25,18 +25,6 @@
   </tr>
 </table>
 
-------
-
-<table align="center">
-  <tr>
-    <td align="center" valign="middle" width="830">
-      <p align="center">
-        <img src="http://github-profile-summary-cards.vercel.app/api/cards/profile-details?username=zaynedoc&theme=dark" width="810"/>
-      </p>
-    </td>
-  </tr>
-</table>
-
 <p align="center">
     <img src="https://capsule-render.vercel.app/api?type=waving&color=gradient&customColorList=6,11,20&height=100&section=footer&animation=twinkling"/>
 </p>
