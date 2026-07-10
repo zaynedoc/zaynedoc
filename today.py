@@ -143,13 +143,16 @@ def recursive_loc(owner, repo_name, data, cache_comment, addition_total=0, delet
         }
     }'''
     variables = {'repo_name': repo_name, 'owner': owner, 'cursor': cursor}
-    request = requests.post('https://api.github.com/graphql', json={'query': query, 'variables':variables}, headers=HEADERS) # I cannot use simple_request(), because I want to save the file before raising Exception
-    if request.status_code == 200:
-        res_json = request.json()
-        if 'data' in res_json and res_json['data'] is not None and res_json['data'].get('repository') is not None and res_json['data']['repository'].get('defaultBranchRef') is not None: # Only count commits if repo isn't empty
-            return loc_counter_one_repo(owner, repo_name, data, cache_comment, res_json['data']['repository']['defaultBranchRef']['target']['history'], addition_total, deletion_total, my_commits)
-        else: return addition_total, deletion_total, my_commits
-    print(f"\nWarning: recursive_loc failed for {owner}/{repo_name} with status code {request.status_code}. Returning partial stats collected so far.")
+    try:
+        request = requests.post('https://api.github.com/graphql', json={'query': query, 'variables':variables}, headers=HEADERS) # I cannot use simple_request(), because I want to save the file before raising Exception
+        if request.status_code == 200:
+            res_json = request.json()
+            if 'data' in res_json and res_json['data'] is not None and res_json['data'].get('repository') is not None and res_json['data']['repository'].get('defaultBranchRef') is not None: # Only count commits if repo isn't empty
+                return loc_counter_one_repo(owner, repo_name, data, cache_comment, res_json['data']['repository']['defaultBranchRef']['target']['history'], addition_total, deletion_total, my_commits)
+            else: return addition_total, deletion_total, my_commits
+        print(f"\nWarning: recursive_loc failed for {owner}/{repo_name} with status code {request.status_code}. Returning partial stats collected so far.")
+    except Exception as e:
+        print(f"\nWarning: recursive_loc failed for {owner}/{repo_name} with network/API error: {e}. Returning partial stats collected so far.")
     return addition_total, deletion_total, my_commits
 
 
@@ -322,15 +325,69 @@ def svg_overwrite(filename, age_data, commit_data, star_data, repo_data, contrib
     """
     tree = etree.parse(filename)
     root = tree.getroot()
-    justify_format(root, 'age_data', age_data, 49)
-    justify_format(root, 'commit_data', commit_data, 22)
-    justify_format(root, 'star_data', star_data, 14)
-    justify_format(root, 'repo_data', repo_data, 6)
-    justify_format(root, 'contrib_data', contrib_data)
-    justify_format(root, 'follower_data', follower_data, 10)
-    justify_format(root, 'loc_data', loc_data[2], 9)
-    justify_format(root, 'loc_add', loc_data[0])
-    justify_format(root, 'loc_del', loc_data[1], 7)
+    
+    # Format integers to strings with commas
+    repo_str = f"{repo_data:,}"
+    contrib_str = f"{contrib_data:,}"
+    star_str = f"{star_data:,}"
+    commit_str = f"{commit_data:,}"
+    follower_str = f"{follower_data:,}"
+    loc_str = str(loc_data[2])
+    loc_add_str = str(loc_data[0])
+    loc_del_str = str(loc_data[1])
+    
+    # Calculate lengths of variable parts
+    uptime_var = len(age_data)
+    line1_var = len(repo_str) + len(contrib_str) + len(star_str)
+    line2_var = len(commit_str) + len(follower_str)
+    line3_var = len(loc_str) + len(loc_add_str) + len(loc_del_str)
+    
+    # Calculate target width (max_W) dynamically (58 is target width excluding leading '. ')
+    max_W = max(58, 9 + uptime_var, 42 + line1_var, 49 + line2_var, 27 + line3_var)
+    
+    # 1. Uptime Line (Key "Uptime:" has 7 chars. Dots/value spaces takes 2 chars. So target offset is max_W - 9)
+    justify_format(root, 'age_data', age_data, max_W - 9)
+    
+    # 2. Line 1: Repos & Stars
+    left_1_len = 38 + len(repo_str) + len(contrib_str)
+    star_dots_len = max_W - left_1_len - len(star_str) - 2
+    if star_dots_len <= 2:
+        star_dots = ' ' if star_dots_len <= 0 else '. '
+    else:
+        star_dots = ' ' + ('.' * star_dots_len) + ' '
+        
+    find_and_replace(root, 'repo_data_dots', ' ..... ')
+    find_and_replace(root, 'repo_data', repo_str)
+    find_and_replace(root, 'contrib_data', contrib_str)
+    find_and_replace(root, 'star_data_dots', star_dots)
+    find_and_replace(root, 'star_data', star_str)
+    
+    # 3. Line 2: Commits & Followers
+    left_2_len = 45 + len(commit_str)
+    follower_dots_len = max_W - left_2_len - len(follower_str) - 2
+    if follower_dots_len <= 2:
+        follower_dots = ' ' if follower_dots_len <= 0 else '. '
+    else:
+        follower_dots = ' ' + ('.' * follower_dots_len) + ' '
+        
+    find_and_replace(root, 'commit_data_dots', ' ..................... ')
+    find_and_replace(root, 'commit_data', commit_str)
+    find_and_replace(root, 'follower_data_dots', follower_dots)
+    find_and_replace(root, 'follower_data', follower_str)
+    
+    # 4. Line 3: Lines of Code (Key "Lines of Code:" has 14 chars. Paren syntax takes 9 chars. So left offset constant is 23)
+    left_3_len = 23 + len(loc_str) + len(loc_add_str) + len(loc_del_str)
+    loc_dots_len = max_W - left_3_len - 2
+    if loc_dots_len <= 2:
+        loc_dots = ' ' if loc_dots_len <= 0 else '. '
+    else:
+        loc_dots = ' ' + ('.' * loc_dots_len) + ' '
+        
+    find_and_replace(root, 'loc_data_dots', loc_dots)
+    find_and_replace(root, 'loc_data', loc_str)
+    find_and_replace(root, 'loc_add', loc_add_str)
+    find_and_replace(root, 'loc_del', loc_del_str)
+    
     tree.write(filename, encoding='utf-8', xml_declaration=True)
 
 
