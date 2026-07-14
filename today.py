@@ -356,7 +356,7 @@ def svg_overwrite(filename, age_data, commit_data, star_data, repo_data, contrib
         repo_dots = ' ' + ('.' * repo_dots_len) + ' '
         
     left_1_len = 34 # constant length before " | Stars:" space
-    star_dots_len = max_W - left_1_len - 1 - 9 - len(star_str) - 2
+    star_dots_len = max_W - left_1_len - 1 - 8 - len(star_str) - 2
     if star_dots_len <= 2:
         star_dots = ' ' if star_dots_len <= 0 else '. '
     else:
