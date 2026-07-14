@@ -343,34 +343,46 @@ def svg_overwrite(filename, age_data, commit_data, star_data, repo_data, contrib
     line3_var = len(loc_str) + len(loc_add_str) + len(loc_del_str)
     
     # Calculate target width (max_W) dynamically (58 is target width excluding leading '. ')
-    max_W = max(58, 9 + uptime_var, 42 + line1_var, 49 + line2_var, 27 + line3_var)
+    max_W = max(58, 9 + uptime_var, 48 + len(star_str), 51 + len(follower_str), 27 + line3_var)
     
     # 1. Uptime Line (Key "Uptime:" has 7 chars. Dots/value spaces takes 2 chars. So target offset is max_W - 9)
     justify_format(root, 'age_data', age_data, max_W - 9)
     
-    # 2. Line 1: Repos & Stars
-    left_1_len = 38 + len(repo_str) + len(contrib_str)
-    star_dots_len = max_W - left_1_len - len(star_str) - 2
+    # 2. Line 1: Repos & Stars (Dynamic pipe alignment at col 35)
+    repo_dots_len = 10 - len(repo_str) - len(contrib_str)
+    if repo_dots_len <= 2:
+        repo_dots = ' ' if repo_dots_len <= 0 else '. '
+    else:
+        repo_dots = ' ' + ('.' * repo_dots_len) + ' '
+        
+    left_1_len = 34 # constant length before " | Stars:" space
+    star_dots_len = max_W - left_1_len - 1 - 9 - len(star_str) - 2
     if star_dots_len <= 2:
         star_dots = ' ' if star_dots_len <= 0 else '. '
     else:
         star_dots = ' ' + ('.' * star_dots_len) + ' '
         
-    find_and_replace(root, 'repo_data_dots', ' ..... ')
+    find_and_replace(root, 'repo_data_dots', repo_dots)
     find_and_replace(root, 'repo_data', repo_str)
     find_and_replace(root, 'contrib_data', contrib_str)
     find_and_replace(root, 'star_data_dots', star_dots)
     find_and_replace(root, 'star_data', star_str)
     
-    # 3. Line 2: Commits & Followers
-    left_2_len = 45 + len(commit_str)
-    follower_dots_len = max_W - left_2_len - len(follower_str) - 2
+    # 3. Line 2: Commits & Followers (Dynamic pipe alignment at col 35)
+    commit_dots_len = 23 - len(commit_str)
+    if commit_dots_len <= 2:
+        commit_dots = ' ' if commit_dots_len <= 0 else '. '
+    else:
+        commit_dots = ' ' + ('.' * commit_dots_len) + ' '
+        
+    left_2_len = 34 # constant length before " | Followers:" space
+    follower_dots_len = max_W - left_2_len - 1 - 12 - len(follower_str) - 2
     if follower_dots_len <= 2:
         follower_dots = ' ' if follower_dots_len <= 0 else '. '
     else:
         follower_dots = ' ' + ('.' * follower_dots_len) + ' '
         
-    find_and_replace(root, 'commit_data_dots', ' ..................... ')
+    find_and_replace(root, 'commit_data_dots', commit_dots)
     find_and_replace(root, 'commit_data', commit_str)
     find_and_replace(root, 'follower_data_dots', follower_dots)
     find_and_replace(root, 'follower_data', follower_str)
