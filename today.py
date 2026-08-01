@@ -7,6 +7,27 @@ import time
 import hashlib
 from collections import Counter
 
+
+def load_local_env():
+    """Load local .env values without overriding environment variables from GitHub Actions."""
+    env_path = os.path.join(os.path.dirname(os.path.abspath(__file__)), '.env')
+    try:
+        with open(env_path, encoding='utf-8') as env_file:
+            for raw_line in env_file:
+                line = raw_line.strip()
+                if not line or line.startswith('#') or '=' not in line:
+                    continue
+                key, value = line.split('=', 1)
+                key = key.strip()
+                value = value.strip().strip('"').strip("'")
+                if key:
+                    os.environ.setdefault(key, value)
+    except FileNotFoundError:
+        pass
+
+
+load_local_env()
+
 # Fine-grained personal access token with All Repositories access:
 # Account permissions: read:Followers, read:Starring, read:Watching
 # Repository permissions: read:Commit statuses, read:Contents, read:Issues, read:Metadata, read:Pull Requests
@@ -47,6 +68,8 @@ def simple_request(func_name, query, variables):
     request = requests.post('https://api.github.com/graphql', json={'query': query, 'variables':variables}, headers=HEADERS)
     if request.status_code == 200:
         return request
+    if request.status_code == 401:
+        raise RuntimeError('GitHub rejected ACCESS_TOKEN. Update the token in .env or your environment variables, then run today.py again.')
     raise Exception(func_name, ' has failed with a', request.status_code, request.text, QUERY_COUNT)
 
 
@@ -108,7 +131,7 @@ def graph_repos_stars(count_type, owner_affiliation, cursor=None, add_loc=0, del
 
 def public_repo_languages(cursor=None, languages=None):
     """
-    Returns the seven largest language shares across public repositories owned by the user.
+    Returns language shares across public repositories owned by the user, ordered by size.
 
     GitHub reports repository language composition as byte counts. Those byte counts
     are summed across repositories, making the percentages code-volume weighted rather
@@ -155,7 +178,7 @@ def public_repo_languages(cursor=None, languages=None):
 
     return [
         (language, size, (size / total_size) * 100)
-        for language, size in languages.most_common(7)
+        for language, size in languages.most_common()
     ]
 
 
@@ -454,14 +477,30 @@ def svg_overwrite(filename, age_data, commit_data, star_data, repo_data, contrib
     find_and_replace(root, 'loc_add', loc_add_str)
     find_and_replace(root, 'loc_del', loc_del_str)
 
-    # 5. Public-repository language card
-    for index in range(7):
+    # 5. Public-repository language card: show the largest eight languages.
+    for index in range(8):
         if index < len(language_data):
             language, _size, percentage = language_data[index]
             language_line = f'{language[:17]:<11} {percentage:>5.1f}%'
         else:
             language_line = ''
         find_and_replace(root, f'language_{index + 1}', language_line)
+
+    # 6. Fit the remaining language names into the 39-character Other Exp. panel.
+    other_prefix = '| Other:'
+    other_panel_width = 39
+    other_value_width = other_panel_width - len(other_prefix) - 3  # minimum " . " filler
+    other_names = []
+    for language, _size, _percentage in language_data[8:]:
+        candidate = ', '.join(other_names + [language])
+        if len(candidate) > other_value_width:
+            break
+        other_names.append(language)
+
+    other_value = ', '.join(other_names) if other_names else 'None'
+    other_dot_count = max(1, other_panel_width - len(other_prefix) - len(other_value) - 2)
+    find_and_replace(root, 'other_languages', other_value)
+    find_and_replace(root, 'other_languages_dots', ' ' + ('.' * other_dot_count) + ' ')
     
     tree.write(filename, encoding='utf-8', xml_declaration=True)
 
