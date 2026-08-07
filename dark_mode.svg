@@ -71,6 +71,7 @@ text, tspan {white-space: pre;}
 <tspan x="591" y="310">| </tspan><tspan class="key">Winner(s)</tspan>:<tspan class="cc"> .......... </tspan><tspan class="value">Crisis-Net.tech</tspan>
 <tspan x="591" y="330">| </tspan><tspan class="key">Other</tspan>:<tspan class="cc"> ......... </tspan><tspan class="value">Fleurish, Vigil SIEM</tspan>
 
+<tspan x="390" y="350" class="cc">. </tspan>
 <tspan x="390" y="370">- GitHub Stats</tspan> -—————————————————————+———————————————————-—-
 <tspan x="390" y="390" class="cc">. </tspan><tspan class="key">Repos</tspan>:<tspan class="cc" id="repo_data_dots"> ...... </tspan><tspan class="value" id="repo_data">63</tspan> {<tspan class="key">Contributed</tspan>: <tspan class="value" id="contrib_data">79</tspan>} | <tspan class="key">Stars</tspan>:<tspan class="cc" id="star_data_dots"> ........... </tspan><tspan class="value" id="star_data">13</tspan>
 <tspan x="390" y="410" class="cc">. </tspan><tspan class="key">Commmits</tspan>:<tspan class="cc" id="commit_data_dots"> .................... </tspan><tspan class="value" id="commit_data">695</tspan> | <tspan class="key">Followers</tspan>:<tspan class="cc" id="follower_data_dots"> ........ </tspan><tspan class="value" id="follower_data">9</tspan>
